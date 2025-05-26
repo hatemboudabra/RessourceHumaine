@@ -32,17 +32,7 @@ pipeline {
                     }
                 }
             }
-            post {
-                always {
-                    junit 'restaurant/target/surefire-reports/*.xml'
-                }
-                success {
-                    echo 'All unit tests passed!'
-                }
-                failure {
-                    echo 'Some unit tests failed.'
-                }
-            }
+      
         }
 
         stage('Upload to Nexus') {
