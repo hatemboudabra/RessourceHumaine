@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/hatemboudabra/Restaurant.git'
+                git branch: 'main', url: 'https://github.com/hatemboudabra/RessourceHumaine.git'
             }
         }
 
