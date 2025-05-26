@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="demandes_subreport" pageWidth="555" pageHeight="842"
+              columnWidth="555" leftMargin="0" rightMargin="0"
+              topMargin="0" bottomMargin="0">
+
+    <field name="id" class="java.lang.Long"/>
+    <field name="title" class="java.lang.String"/>
+    <field name="description" class="java.lang.String"/>
+    <field name="date" class="java.util.Date"/>
+    <field name="status" class="com.example.PortailRH.entity.enummerations.Status"/>
+    <field name="type" class="com.example.PortailRH.entity.enummerations.Type"/>
+    <field name="documentType" class="java.lang.String"/>
+    <field name="amount" class="java.lang.Double"/>
+    <field name="loanType" class="java.lang.String"/>
+    <field name="nbrejour" class="java.lang.Long"/>
+    <field name="username" class="java.lang.String"/>
+
+    <!-- No column headers -->
+
+    <detail>
+        <band height="20">
+            <textField isBlankWhenNull="true">
+                <reportElement x="0" y="0" width="80" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{type} != null ? $F{type}.name() : ""]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="80" y="0" width="120" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{title} != null && !$F{title}.isEmpty() ? $F{title} : "Demande sans titre"]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="200" y="0" width="80" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{status} != null ? $F{status}.name() : ""]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+                <reportElement x="280" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

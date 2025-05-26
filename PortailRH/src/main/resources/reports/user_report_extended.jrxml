@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="user_report" pageWidth="595" pageHeight="842"
+              columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20" isIgnorePagination="true">
+
+    <!-- Sous-rapports paramètres -->
+    <parameter name="certificats_subreport" class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="competences_subreport" class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="demandes_subreport" class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="formations_subreport" class="net.sf.jasperreports.engine.JasperReport"/>
+
+    <!-- Champs principaux -->
+    <field name="id" class="java.lang.Long"/>
+    <field name="username" class="java.lang.String"/>
+    <field name="email" class="java.lang.String"/>
+    <field name="post" class="java.lang.String"/>
+    <field name="sexe" class="java.lang.String"/>
+    <field name="language" class="java.lang.String"/>
+    <field name="dateOfBirth" class="java.time.LocalDate"/>
+    <field name="nationality" class="java.lang.String"/>
+    <field name="phone1" class="java.lang.String"/>
+    <field name="address" class="java.lang.String"/>
+    <field name="civilStatus" class="java.lang.String"/>
+    <field name="city" class="java.lang.String"/>
+    <field name="postalCode" class="java.lang.String"/>
+    <field name="country" class="java.lang.String"/>
+    <field name="noteGlobale" class="java.lang.Double"/>
+    <field name="demandes" class="java.util.List"/>
+    <field name="formations" class="java.util.List"/>
+
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="0" width="555" height="30"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="22" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fiche Utilisateur]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <detail>
+        <band height="520" splitType="Stretch">
+            <!-- Section Informations Personnelles -->
+            <staticText>
+                <reportElement x="0" y="10" width="180" height="20"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Informations Personnelles]]></text>
+            </staticText>
+
+            <!-- Grille d'informations personnelles -->
+            <staticText>
+                <reportElement x="0" y="40" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ID:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="40" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="60" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nom d'utilisateur:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="60" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="80" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Email:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="80" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="100" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Poste:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="100" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{post}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="280" y="40" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date de naissance:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="400" y="40" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="280" y="60" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nationalité:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="400" y="60" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{nationality}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="280" y="80" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Téléphone:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="400" y="80" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{phone1}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="280" y="100" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Adresse:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="400" y="100" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="120" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Situation:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="120" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{civilStatus}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="280" y="120" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Ville:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="400" y="120" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="140" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Code postal:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="140" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{postalCode}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="280" y="140" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Pays:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="400" y="140" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{country}]]></textFieldExpression>
+            </textField>
+
+            <!-- Section Demandes -->
+            <staticText>
+                <reportElement x="0" y="230" width="180" height="20"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Demandes]]></text>
+            </staticText>
+
+            <!-- En-têtes de colonne pour les demandes -->
+            <staticText>
+                <reportElement x="0" y="260" width="80" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Type]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="260" width="120" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Titre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="200" y="260" width="80" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Statut]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="260" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+
+
+            <subreport>
+                <reportElement x="0" y="280" width="555" height="60"/>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{demandes})]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{demandes_subreport}]]></subreportExpression>
+            </subreport>
+
+            <!-- Section Formations -->
+            <staticText>
+                <reportElement x="0" y="360" width="180" height="20"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Formations]]></text>
+            </staticText>
+
+            <subreport>
+                <reportElement x="0" y="390" width="555" height="130"/>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{formations})]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{formations_subreport}]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+
+    <pageFooter>
+        <band height="30">
+            <textField>
+                <reportElement x="455" y="0" width="100" height="30"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+</jasperReport>
