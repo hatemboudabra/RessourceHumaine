@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="chatService" />
+        <module name="PortailRH" />
         <module name="eurekaSerice" />
       </profile>
       <profile name="Annotation profile for PortailRH" enabled="true">
@@ -16,7 +17,6 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
-        <module name="PortailRH" />
         <module name="Notification_Serivce" />
       </profile>
     </annotationProcessing>

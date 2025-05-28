@@ -3,10 +3,10 @@ global:
   evaluation_interval: 10s
 
 scrape_configs:
-  - job_name: 'coco_tekup'
+  - job_name: 'Portail_RH'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
       - targets: ['app:8082']
         labels:
-          application: 'COCO Application'
+          application: 'portailRH'
