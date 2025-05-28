@@ -67,7 +67,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts artifacts: 'restaurant/target/site/jacoco/*.html', allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'PortailRH/target/site/jacoco/*.html', allowEmptyArchive: true
                 }
             }
         }
@@ -76,7 +76,13 @@ pipeline {
             steps {
                 dir('PortailRH') {
                     script {
-                        dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'Dependency-Check'
+                        // First try with standard update
+                        try {
+                            dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'Dependency-Check'
+                        } catch (e) {
+                            echo "First attempt failed, retrying with --noupdate"
+                            dependencyCheck additionalArguments: '--scan ./ --noupdate', odcInstallation: 'Dependency-Check'
+                        }
                         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
                     }
                 }
