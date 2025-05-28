@@ -76,13 +76,7 @@ pipeline {
             steps {
                 dir('PortailRH') {
                     script {
-                        // First try with standard update
-                        try {
-                            dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'Dependency-Check'
-                        } catch (e) {
-                            echo "First attempt failed, retrying with --noupdate"
-                            dependencyCheck additionalArguments: '--scan ./ --noupdate', odcInstallation: 'Dependency-Check'
-                        }
+                        dependencyCheck additionalArguments: '--scan ./ --noupdate', odcInstallation: 'Dependency-Check'
                         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
                     }
                 }
