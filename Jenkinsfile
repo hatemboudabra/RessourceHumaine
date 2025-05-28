@@ -35,16 +35,6 @@ pipeline {
       
         }
 
-        stage('Upload to Nexus') {
-            steps {
-                dir('PortailRH') {
-                    script {
-                        sh "${MAVEN_HOME}/bin/mvn deploy"
-                    }
-                }
-            }
-        }
-
         stage('Run SonarQube Analysis') {
             steps {
                 dir('PortailRH') {
