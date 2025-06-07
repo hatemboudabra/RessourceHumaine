@@ -1,11 +1,10 @@
 global:
-  scrape_interval: 10s
-  evaluation_interval: 10s
+  scrape_interval: 15s
+  evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: 'Portail_RH'
+  - job_name: 'spring'
     metrics_path: '/actuator/prometheus'
-    scrape_interval: 5s
     static_configs:
       - targets: ['app:8082']
         labels:
